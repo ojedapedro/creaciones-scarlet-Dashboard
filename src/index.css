@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  
+  body {
+    @apply bg-noir text-white font-montserrat antialiased;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-obsidian; }
+  ::-webkit-scrollbar-thumb { @apply bg-scarlet rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-scarlet-dark; }
+}
+
+@layer components {
+  .card {
+    @apply bg-panel border border-border-dark rounded-2xl p-5;
+  }
+  .btn-primary {
+    @apply bg-gradient-scarlet text-white font-montserrat font-semibold px-5 py-2.5 rounded-xl
+           hover:opacity-90 active:scale-95 transition-all duration-200 flex items-center gap-2;
+  }
+  .btn-gold {
+    @apply bg-gradient-gold text-noir font-montserrat font-semibold px-5 py-2.5 rounded-xl
+           hover:opacity-90 active:scale-95 transition-all duration-200 flex items-center gap-2;
+  }
+  .btn-ghost {
+    @apply border border-border-dark text-champagne font-montserrat px-5 py-2.5 rounded-xl
+           hover:border-scarlet hover:text-scarlet transition-all duration-200 flex items-center gap-2;
+  }
+  .input-dark {
+    @apply bg-obsidian border border-border-dark rounded-xl px-4 py-2.5 text-white 
+           placeholder-champagne/40 focus:outline-none focus:border-scarlet transition-colors w-full
+           font-montserrat text-sm;
+  }
+  .label-dark {
+    @apply text-champagne/70 text-xs font-montserrat font-semibold uppercase tracking-wider mb-1.5 block;
+  }
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-champagne/60 font-montserrat text-sm
+           hover:text-white hover:bg-white/5 transition-all duration-200 cursor-pointer;
+  }
+  .nav-link.active {
+    @apply text-white bg-scarlet/15 border-l-2 border-scarlet;
+  }
+  .section-title {
+    @apply font-cormorant text-3xl text-white font-light tracking-wide;
+  }
+  .kpi-change-up { @apply text-emerald-400 text-xs font-semibold; }
+  .kpi-change-down { @apply text-red-400 text-xs font-semibold; }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.3s ease forwards; }
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.slide-in { animation: slideIn 0.3s ease forwards; }
+
+/* Recharts custom */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: #13151C !important;
+  border: 1px solid #1E2028 !important;
+  border-radius: 12px !important;
+}
+.recharts-cartesian-grid line { stroke: #1E2028 !important; }
